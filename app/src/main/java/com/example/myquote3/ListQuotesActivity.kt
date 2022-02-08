@@ -57,8 +57,11 @@ class ListQuotesActivity : AppCompatActivity() {
                         val author = jsonObject.getString("author")
                         listQuote.add("\n$quote\n — $author\n")
                     }
+
+                    //memasukan data ke adapter recylerview
                     val adapter = QuoteAdapter(listQuote)
                     binding.listQuote.adapter = adapter
+
                 } catch (e: Exception) {
                     Toast.makeText(this@ListQuotesActivity, e.message, Toast.LENGTH_SHORT).show()
                     e.printStackTrace()
