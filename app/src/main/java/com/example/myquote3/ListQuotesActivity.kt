@@ -37,7 +37,7 @@ class ListQuotesActivity : AppCompatActivity() {
     private fun getListQuotes() {
         binding.progressBar.visibility = View.VISIBLE
         val client = AsyncHttpClient()
-        val url = "https://quote-api.dicoding.dev/list"
+        val url = "https://type.fit/api/quotes"
         client.get(url, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
@@ -53,7 +53,7 @@ class ListQuotesActivity : AppCompatActivity() {
                     val jsonArray = JSONArray(result)
                     for (i in 0 until jsonArray.length()) {
                         val jsonObject = jsonArray.getJSONObject(i)
-                        val quote = jsonObject.getString("en")
+                        val quote = jsonObject.getString("text")
                         val author = jsonObject.getString("author")
                         listQuote.add("\n$quote\n — $author\n")
                     }
